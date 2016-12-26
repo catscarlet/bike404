@@ -10,9 +10,13 @@ class ReportDataModel
 
     public function saveReportData($data)
     {
-        $ReportLost = M('report_lost');
+        $MailModel = D('Mail');
+        $MailModel->sendMail($data);
+
         $McryptModel = D('Mcrypt');
         $data['email'] = $McryptModel->encrypt($data['email']);
+
+        $ReportLost = M('report_lost');
         $result = $ReportLost->add($data);
 
         return $result;
