@@ -41,8 +41,8 @@ class MailController extends Controller
         $body = $this->fetch(T('Public/lost_information'));
 
         $MailModel = D('Mail');
-        $MailModel->sendMail($user, $sendTo, $body);
+        $rst = $MailModel->sendMail($user, $sendTo, $body);
 
-        return true;
+        return $rst;
     }
 }
