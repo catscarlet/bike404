@@ -49,7 +49,6 @@ CREATE TABLE IF NOT EXISTS `list` (
   `update_time` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
 -- --------------------------------------------------------
 
 --
@@ -63,7 +62,6 @@ CREATE TABLE IF NOT EXISTS `mailpool` (
   `desc` text COLLATE utf8mb4_unicode_ci,
   `update-time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 
 -- --------------------------------------------------------
 
