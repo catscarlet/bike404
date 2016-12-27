@@ -27,7 +27,7 @@ class McryptModel
         $privateKey = $this->privateKey;
 
         $encryptedData = base64_decode($based_encrypted);
-        $decrypted = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $privateKey, $encryptedData, MCRYPT_MODE_CFB, $iv), "\0");
+        $decrypted = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $privateKey, $encryptedData, MCRYPT_MODE_CFB, $iv), "\0");
 
         return $decrypted;
     }
