@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('.slider').slider({
         full_width: true,
-        height: 360
+        height: 360,
     });
 });

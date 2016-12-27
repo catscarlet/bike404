@@ -6,7 +6,7 @@ $(document).ready(function() {
         todayBtn: 'linked',
         language: 'zh-CN',
         autoclose: true,
-        todayHighlight: true
+        todayHighlight: true,
     });
 
     $('select').material_select();
@@ -92,26 +92,29 @@ function postReportLostData() {
         return false;
     }
 
+    $('#submit-info').text('提交中...');
     $('#submit-info').off('click');
     $('#submit-info').addClass('disabled');
     $.ajax({
         type: 'POST',
         url: '/index.php/Home/report/postReportLostData',
         data: reportlostdata,
-        processData: false,  // 告诉jQuery不要去处理发送的数据
-        contentType: false,   // 告诉jQuery不要去设置Content-Type请求头
+        processData: false,
+        contentType: false,
         dataType: 'json',
         async: true,
         success: function(msg) {
-            Materialize.toast('提交成功!', 4000);
+            $('#submit-info').text('提交成功');
+            Materialize.toast('提交成功！请等待页面刷新。', 4000);
             window.location.href = window.location.protocol + '//' + window.location.hostname + '/index.php/Home/report/reportSuccess?id=' + msg;
         },
         error: function(msg) {
-            Materialize.toast('提交失败!', 4000);
+            $('#submit-info').text('重新提交您的信息');
+            Materialize.toast('提交失败！', 4000);
             console.log(msg);
             $('#submit-info').on('click', postReportLostData);
             $('#submit-info').removeClass('disabled');
-        }
+        },
     });
 }
 

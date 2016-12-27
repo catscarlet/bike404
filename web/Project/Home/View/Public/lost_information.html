@@ -1,7 +1,6 @@
 <ul class="collapsible" data-collapsible="accordion">
     <li>
         <div class="collapsible-header active">
-            <i class="mdi-image-filter-drama"></i>
             <strong>{$result.id}:{$result.area}:{$result.brand}<if condition="array_key_exists('sub_brand',$result)">{$result.sub_brand}</if>:{$result.color}:{$result.type}:
                 <if condition="($result.alerted_police eq 0) ">未报警
                     <elseif condition="($result.alerted_police eq 1)"/>已报警
@@ -52,7 +51,9 @@
                     <br>
                     <strong>条目更新时间：</strong>{$result.update_time}
                 </if>
-
+                <br>
+                <br>
+                固定链接：<a href="{$result.url}">{$result.url}</a>
             </p>
         </div>
     </li>

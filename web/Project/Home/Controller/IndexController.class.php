@@ -37,6 +37,7 @@ class IndexController extends BaseController
         }
 
         $this->unixtimestampToHumanreadable($result);
+        $result['url'] = C('SITE_URL').'index/getbyid?id='.$id;
 
         $this->assign('result', $result);
         $this->assign('imgUrlList', $imgUrlList);

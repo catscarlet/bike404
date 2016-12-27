@@ -3,6 +3,6 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#tabs-wrapper').pushpin({
-        offset: 75
+        offset: 75,
     });
 });
