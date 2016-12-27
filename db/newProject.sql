@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 2016-10-25 07:57:55
+-- Generation Time: 2016-12-27 09:54:19
 -- 服务器版本： 5.6.26
 -- PHP Version: 5.4.16
 
@@ -49,6 +49,22 @@ CREATE TABLE IF NOT EXISTS `list` (
   `update_time` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `mailpool`
+--
+
+CREATE TABLE IF NOT EXISTS `mailpool` (
+  `id` int(11) NOT NULL,
+  `report_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '0' COMMENT '0未发送，1已发送，2发送失败',
+  `desc` text COLLATE utf8mb4_unicode_ci,
+  `update-time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
 -- --------------------------------------------------------
 
 --
@@ -68,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `report_lost` (
   `email` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
   `contact` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
   `uuid` varchar(36) CHARACTER SET utf8mb4 DEFAULT '00000000-0000-0000-0000-000000000000',
-  `lost_time` timestamp NULL DEFAULT NULL COMMENT '丢车时间',
+  `lost_time` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '丢车时间',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NULL DEFAULT NULL,
   `img_info_id` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -86,6 +102,13 @@ ALTER TABLE `list`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mailpool`
+--
+ALTER TABLE `mailpool`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `status` (`status`);
+
+--
 -- Indexes for table `report_lost`
 --
 ALTER TABLE `report_lost`
@@ -99,6 +122,11 @@ ALTER TABLE `report_lost`
 -- AUTO_INCREMENT for table `list`
 --
 ALTER TABLE `list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mailpool`
+--
+ALTER TABLE `mailpool`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `report_lost`
