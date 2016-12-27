@@ -8,7 +8,6 @@ class ReportController extends Controller
 {
     public function index()
     {
-        //$this->redirect('About/index', null, 1, '重定向至[关于本站]页面中...');
         $this->display();
     }
 
@@ -97,12 +96,14 @@ class ReportController extends Controller
     {
         $invalid = false;
         $keys = array_keys($data);
-        $check_keys = array('user','area','brand','color','alerted_police','status','lost_time_pickadate','info','email','timestamp','img_info_id');
+        $check_keys = array('user','area','brand','color','alerted_police','status','lost_time','info','email','timestamp','img_info_id');
         foreach ($check_keys as $key) {
             if (!in_array($key, $keys)) {
                 $invalid = true;
+                break;
             }
         }
+
         return $invalid;
     }
 }

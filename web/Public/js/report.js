@@ -1,7 +1,7 @@
 var timestamp;
 
 $(document).ready(function() {
-    $('#lost_time_pickadate').datepicker({
+    $('#lost_time').datepicker({
         maxViewMode: 2,
         todayBtn: 'linked',
         language: 'zh-CN',
@@ -119,7 +119,7 @@ function postReportLostData() {
 }
 
 function postDataCheck() {
-    x = !($('#user').val()) || !($('#area').val()) || !($('#brand').val()) || !($('#color').val()) || !($('#type').val()) || !($('#lost_time_pickadate').val()) || !($('#info').val()) || !($('#email').val());
+    x = !($('#user').val()) || !($('#area').val()) || !($('#brand').val()) || !($('#color').val()) || !($('#type').val()) || !($('#lost_time').val()) || !($('#info').val()) || !($('#email').val());
     if (x) {
         return false;
     }
